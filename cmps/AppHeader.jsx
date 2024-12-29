@@ -15,15 +15,19 @@ export function AppHeader() {
   const user = useSelector((storeState) => storeState.userModule.loggedInUser)
 
   function onLogout() {
-    userService
-      .logout()
-      .then(() => {
-        dispatch(logout())
-        navigate('/')
-      })
-      .catch((err) => {
-        showErrorMsg('OOPs try again')
-      })
+    // userService
+    //   .logout()
+    //   .then(() => {
+    //     dispatch(logout())
+    //     navigate('/')
+    //   })
+    //   .catch((err) => {
+    //     showErrorMsg('OOPs try again')
+    //   })
+    logout()
+            .catch((err) => {
+                showErrorMsg('OOPs try again')
+            })
   }
 
   return (
@@ -36,8 +40,8 @@ export function AppHeader() {
             <button onClick={onLogout}>Logout</button>
           </section>
         ) : (
-          <section>{/* <LoginSignup /> */}</section>
-        )}
+          <LoginSignup />
+            )}
         <nav className="app-nav">
           <NavLink to="/">Home</NavLink>
           <NavLink to="/about">About</NavLink>
